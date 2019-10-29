@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>To-Do List</title>
+        <link rel="icon" href="/img/check_mark.jpg">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+
+    <body>
+        <div class='main-content'> 
+            <h1>To-Do List!</h1>
+            <button onclick="document.getElementById('login').style.display='block'" style="width:auto; background-color:#239c9c;">Login</button>
+
+            <div id='login' class='modal'>
+                <form class='modal-content animate' action='/users/login' method='post'>
+                    <div class='imgcontainer'>
+                        <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div class='container'>
+                        <label for='email'><b>Username</b></label>
+                        <input type='text' placeholder='Enter Username' name='email' required>
+                        <label for='password'><b>Password</b></label>
+                        <input type='text' placeholder='Enter Password' name='password' autocomplete="off" required>
+
+                        <button type='submit' style='background-color:#239c9c;'>Login</button>
+                        <label></label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+                        <span id='loginError'>{{msg}}</span>
+                    </div>
+                    <div class='container' style='background-color:#f1f1f1'>
+                        <button type='button' onclick="document.getElementById('login').style.display='none'">Cancel</button>
+                        <span class="psw">Forgot <a href="#">password</a>?</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script>
+        if ({{login}}) {
+            document.getElementById("login").style.display = "block";
+            {{login}} = false;
+        } else {
+            document.getElementById("login").style.display = "none"
+        }
+    </script>
+</html>
